@@ -1,42 +1,57 @@
-//Selectors
-const todoInput= document.querySelector('.todo-input');
-const todoButton= document.querySelector('.todo-button');
-const todoList= document.querySelector('.todo-list');
+const addButton= document.querySelector('.addButton');
+const container= document.querySelector('.container');
+const inputField= document.querySelector('.inputField');
+const wrapper= document.querySelector('.wrapper');
+let counter =0;
+const arr =[]
+const arr2=[]
+addButton.addEventListener('click',function(){
+    const newDiv= document.createElement('div');
+    wrapper.appendChild(newDiv);
 
-
-//Event Listeners
-todoButton.addEventListener('click',addTodo)
-
-//Functions
-
-function addTodo(event){
-    event.preventDefault();
+   
+    newDiv.classList.add('newDiv');
+    arr2.push(newDiv);
+    const deleteButton= document.createElement('button')
     
+    const paragraph= document.createElement('p');
+    paragraph.classList.add('todo-paragraph')
+    newDiv.appendChild(paragraph);
+    deleteButton.classList.add('deleteButton')
+    deleteButton.setAttribute('id',counter);
+    arr.push(deleteButton);
+    counter++
+
+
+   
+    // deleteButton.innerHTML='<img src="images/bin2.png" alt="">'
     
-    //Todo DIV
-    const todoDiv= document.createElement('div');
-    todoDiv.classList.add('todo');
+   
+    newDiv.appendChild(deleteButton);
+    paragraph.innerHTML= inputField.value;
+    
+    render()
 
-    //Create li
-const newTodoLi= document.createElement('li')
-newTodoLi.innerText='hey';
-newTodoLi.classList.add('todo-item');
 
-todoDiv.appendChild(newTodoLi);
+deleteButton.addEventListener('click',function(e){
+     const index=e.target.id;
+     arr2[index]=null;
 
-// Check mark button
-const completedButton= document.createElement('button');
+     render()
+     
+    
+  
+})
+})
 
-completedButton.innerHTML= '<i class="fa fa-check ikon"></i>';
-completedButton.classList.add('completed-btn');
-todoDiv.appendChild(completedButton);
-// remove mark button
-const removeButton= document.createElement('button');
-removeButton.innerHTML= '<li class="fas fa-trash"></i>'
-removeButton.classList.add('remove-btn');
-todoDiv.appendChild(removeButton);
 
-//apend to list 
+function render(){
+wrapper.innerHTML='';
 
-todoList.appendChild(todoDiv);
+for(i=0;i<arr2.length;i++){
+    if(arr2[i]!==null){
+    wrapper.appendChild(arr2[i]);
+}
+}
+
 }
