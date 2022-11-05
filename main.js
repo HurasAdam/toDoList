@@ -4,54 +4,63 @@ const inputField= document.querySelector('.inputField');
 const wrapper= document.querySelector('.wrapper');
 let counter =0;
 const arr =[]
-const arr2=[]
+
+
+//making new div with paragraph inside, adding classes and pushing both into div-wrapper
 addButton.addEventListener('click',function(){
     const newDiv= document.createElement('div');
-    wrapper.appendChild(newDiv);
-
-   
     newDiv.classList.add('newDiv');
-    arr2.push(newDiv);
+    wrapper.appendChild(newDiv);
+    const toDoList= document.createElement('li');
+    toDoList.classList.add('toDoList')
+    newDiv.appendChild(toDoList);
+    arr.push(newDiv);
+    toDoList.innerHTML= inputField.value;
+    
+    
+
+    
+    const checkedButton= document.createElement('button')
     const deleteButton= document.createElement('button')
-    
-    const paragraph= document.createElement('p');
-    paragraph.classList.add('todo-paragraph')
-    newDiv.appendChild(paragraph);
-    deleteButton.classList.add('deleteButton')
-    deleteButton.setAttribute('id',counter);
-    arr.push(deleteButton);
-    counter++
-
-
-   
-    // deleteButton.innerHTML='<img src="images/bin2.png" alt="">'
-    
-   
+    deleteButton.classList.add('deleteButton');
+    checkedButton.classList.add('checkedButton')
+    newDiv.appendChild(checkedButton);
     newDiv.appendChild(deleteButton);
-    paragraph.innerHTML= inputField.value;
     
+   
+    deleteButton.setAttribute('id',counter);
+    
+    counter++
+   
+    
+    deleteButton.innerHTML='<img src="images/bin.png" alt="">'
+    
+    checkedButton.innerHTML= '<img src="images/done.png" alt="">'
     render()
+    checkedButton.addEventListener('click',function(e){
+        toDoList.classList.toggle('active');
+    })
 
-
+//delete-button listener
 deleteButton.addEventListener('click',function(e){
-     const index=e.target.id;
-     arr2[index]=null;
+    console.log(e.target) 
+    const index=e.target.id;
+     arr[index]=null;
 
+
+     
      render()
      
-    
-  
 })
 })
-
 
 function render(){
 wrapper.innerHTML='';
 
-for(i=0;i<arr2.length;i++){
-    if(arr2[i]!==null){
-    wrapper.appendChild(arr2[i]);
+for(i=0;i<arr.length;i++){
+    if(arr[i]!==null){
+    wrapper.appendChild(arr[i]);
+}
 }
 }
 
-}
