@@ -1,69 +1,66 @@
-const addButton= document.querySelector('.addButton');
-const container= document.querySelector('.container');
-const inputField= document.querySelector('.inputField');
-const wrapper= document.querySelector('.wrapper');
-const checkedTasks= document.querySelector('.checkedTasks');
+const addButton = document.querySelector(".addButton");
+const container = document.querySelector(".container");
+const inputField = document.querySelector(".inputField");
+const wrapper = document.querySelector(".wrapper");
+const checkedTasks = document.querySelector(".checkedTasks");
+const newDivArr = [];
+const arr = [];                 
 
-const arr=[];
-let counter=0;
-let counter2=0;
-const choice = document.querySelector('#choice');
+let counter2 = 0;
+const choice = document.querySelector("#choice");
 //making new div and li wih classes and pushing both into div-wrapper
-addButton.addEventListener('click',function(){
+addButton.addEventListener("click", createTask)
+  
 
-   
-const newDiv= document.createElement('div');
-newDiv.classList.add('newDiv');
-newDiv.setAttribute('id','div'+counter);
+function createTask(){
 
-const toDoList= document.createElement('li');
-toDoList.classList.add('toDoList')
-toDoList.setAttribute('id', counter);
-newDiv.appendChild(toDoList);
+const newDiv = document.createElement("div");
+  newDiv.setAttribute("id", "div" + arr.length);
+  wrapper.appendChild(newDiv);
+  if (arr.length % 2 === 0) {
+    newDiv.classList.add("rotateRight");
+  } else {
+    newDiv.classList.add("rotateLeft");
+  }
+  const toDoList = document.createElement("li");
+  toDoList.classList.add("Rotate");
+  toDoList.setAttribute("id", arr.length);
+  newDiv.appendChild(toDoList);
 
-toDoList.innerHTML= inputField.value;
-const checkedButton= document.createElement('button')
-const deleteButton= document.createElement('button')
-deleteButton.classList.add('deleteButton');
-checkedButton.classList.add('checkedButton')
-newDiv.appendChild(checkedButton);
-newDiv.appendChild(deleteButton);
-deleteButton.innerHTML='<img src="images/bin.png" alt="">'
-checkedButton.innerHTML= '<img src="images/done.png" alt="">'
-inputField.value='';
-counter++
+  toDoList.innerHTML = inputField.value;
+  const checkedButton = document.createElement("button");
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("deleteButton");
+  checkedButton.classList.add("checkedButton");
+  newDiv.appendChild(checkedButton);
+  newDiv.appendChild(deleteButton);
+//   deleteButton.innerHTML = '<img src="images/bin.png" alt="">';
+  checkedButton.innerHTML = '<img src="images/done.png" alt="">';
+  inputField.value = "";
+  arr.push(newDiv);
+  checkedButton.addEventListener("click", function (e){tasksChecked (toDoList,newDiv)} );
 
+  deleteButton.addEventListener("click",removeTask);
+}
+    function removeTask(e){
+    const item = e.target;
+console.log(item);
+    item.parentElement.remove();
+}
+function tasksChecked(toDoList,newDiv){
+
+   newDivArr.push(toDoList);
+
+      if (counter2 <= 5) {
+        const tasksDone = document.createElement("div");
+        tasksDone.classList.add("tasksDone");
+        tasksDone.setAttribute("id", "tasksDone" + checkedTasks.length);
+        checkedTasks.appendChild(tasksDone);
+        newDivArr.pop();
+        newDiv.remove();
+        counter2++;
+      } else {
+        alert("List of completed tasks is full");
+      }
     
-wrapper.appendChild(newDiv);
-
-checkedButton.addEventListener('click',function(e){
-        toDoList.classList.toggle('active');
-        
-   arr.push(toDoList);
-
-   for(i=0;i<arr.length;i++){
-if(counter2<=5){
-    const tasksDone= document.createElement('div');
-tasksDone.classList.add('tasksDone');
-tasksDone.setAttribute('id','tasksDone'+i);
-checkedTasks.appendChild(tasksDone);
-tasksDone.appendChild(arr[i]);
-arr.pop();
-newDiv.remove();
-
-counter2++
 }
-else{
-    alert('List of completed tasks is full')
-}
- } })
-
-
-deleteButton.addEventListener('click',function(e){
- 
-const item= e.target;
-
-item.parentElement.remove();
-     
-})
-})
