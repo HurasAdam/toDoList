@@ -2,19 +2,24 @@ const addButton= document.querySelector('.addButton');
 const container= document.querySelector('.container');
 const inputField= document.querySelector('.inputField');
 const wrapper= document.querySelector('.wrapper');
-let counter =0;
-const arr =[]
+const checkedTasks= document.querySelector('.checkedTasks');
 
-
+const arr=[];
+let counter=0;
+const choice = document.querySelector('#choice');
 //making new div and li wih classes and pushing both into div-wrapper
 addButton.addEventListener('click',function(){
+
+   
 const newDiv= document.createElement('div');
 newDiv.classList.add('newDiv');
-wrapper.appendChild(newDiv);
+newDiv.setAttribute('id','div'+counter);
+
 const toDoList= document.createElement('li');
 toDoList.classList.add('toDoList')
+toDoList.setAttribute('id', counter);
 newDiv.appendChild(toDoList);
-arr.push(newDiv);
+
 toDoList.innerHTML= inputField.value;
 const checkedButton= document.createElement('button')
 const deleteButton= document.createElement('button')
@@ -22,33 +27,37 @@ deleteButton.classList.add('deleteButton');
 checkedButton.classList.add('checkedButton')
 newDiv.appendChild(checkedButton);
 newDiv.appendChild(deleteButton);
-deleteButton.setAttribute('id',counter);
-counter++
 deleteButton.innerHTML='<img src="images/bin.png" alt="">'
 checkedButton.innerHTML= '<img src="images/done.png" alt="">'
-render()
+inputField.value='';
+counter++
+
+    
+wrapper.appendChild(newDiv);
 
 checkedButton.addEventListener('click',function(e){
         toDoList.classList.toggle('active');
-    })
+        
+   arr.push(toDoList);
 
-//delete-button listener
+   for(i=0;i<arr.length;i++){
+const tasksDone= document.createElement('div');
+tasksDone.classList.add('tasksDone');
+tasksDone.setAttribute('id','tasksDone'+i);
+checkedTasks.appendChild(tasksDone);
+tasksDone.appendChild(arr[i]);
+newDiv.remove();
+toDoList.classList.remove('active');
+
+
+ } })
+
+
 deleteButton.addEventListener('click',function(e){
  
-const index=e.target.id;
-arr[index]=null;
-render()
+const item= e.target;
+
+item.parentElement.remove();
      
 })
 })
-
-function render(){
-wrapper.innerHTML='';
-
-for(i=0;i<arr.length;i++){
-    if(arr[i]!==null){
-    wrapper.appendChild(arr[i]);
-}
-}
-}
-

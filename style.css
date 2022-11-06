@@ -6,12 +6,32 @@
 
 body{
     height: 100vh;
+    width: 100vw;
     background: linear-gradient(162deg, rgba(8,8,9,1) 0%, rgba(40,45,103,0.9948354341736695) 48%, rgba(0,168,255,1) 100%);
     display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: column;
+    align-items: center;
+  
 
 }
+
+
+.section1{
+width: 400px;
+border: 2px solid white;
+}
+
+.section2{
+    
+    width: 400px;
+    border: 2px solid white;
+    }
+
+.section3{
+    
+    width: 400px;
+    border: 2px solid white;
+    }
 
 .container{
     display: flex;
@@ -21,35 +41,27 @@ body{
 
 
 .inputField{
-    width: 300px;
+    
     height: 45px;
     border-radius: 5px;
+    width: 350px;
     border: none;
 }
-
-.addButton{
-    margin: 0 -45px; 
-    height: 45px;
-    width: 45px;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.addButton img{
-    height: 40px;
-    width: 40px; 
-}
-
-
 
 .wrapper{
+    width: 400px;
+    height: 20px;
+    
+ 
+    
+    
     
 }
 .newDiv{
    margin:25px;
     height: 50px;
-    width: 420px;
+    
+    
     border-radius: 8px;
   background-color: aliceblue;
     display: flex;
@@ -79,6 +91,20 @@ align-items: center;
     width: 50px;
     height: 50px;
 } */
+
+.addButton{
+    margin: 0 -45px; 
+    height: 45px;
+    width: 45px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.addButton img{
+    height: 40px;
+    width: 40px; 
+}
 
 .toDoList{
     color:black;
@@ -117,6 +143,31 @@ align-items: center;
 }
 
 .toDoList.active{
+    opacity: 0.5;
     text-decoration: line-through;
-    color:red;
+    text-decoration-color: rgb(65, 60, 59);
+    
+}
+
+.tasksDone{
+    height: 35px;
+    border-radius: 10px;
+    
+    background-color: white;
+    margin: 10px;
+}
+
+.checkedTasks{
+    width: 400px;
+    height: 100vh;
+   display: flex;
+  
+   flex-direction: column-reverse;
+    position:relative;
+    margin: 250px;
+}
+
+.tasksDone li{
+    margin: 2px 15px;
+    
 }
