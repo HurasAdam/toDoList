@@ -6,6 +6,7 @@ const checkedTasks= document.querySelector('.checkedTasks');
 
 const arr=[];
 let counter=0;
+let counter2=0;
 const choice = document.querySelector('#choice');
 //making new div and li wih classes and pushing both into div-wrapper
 addButton.addEventListener('click',function(){
@@ -41,15 +42,20 @@ checkedButton.addEventListener('click',function(e){
    arr.push(toDoList);
 
    for(i=0;i<arr.length;i++){
-const tasksDone= document.createElement('div');
+if(counter2<=5){
+    const tasksDone= document.createElement('div');
 tasksDone.classList.add('tasksDone');
 tasksDone.setAttribute('id','tasksDone'+i);
 checkedTasks.appendChild(tasksDone);
 tasksDone.appendChild(arr[i]);
+arr.pop();
 newDiv.remove();
-toDoList.classList.remove('active');
 
-
+counter2++
+}
+else{
+    alert('List of completed tasks is full')
+}
  } })
 
 
