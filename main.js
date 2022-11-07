@@ -17,15 +17,27 @@ function createTask(){
 const newDiv = document.createElement("div");
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
+  if(arr.length>7){
+   
+   alert('Task Board is full');
+   return;
+    
+  }
   if (arr.length % 2 === 0) {
     newDiv.classList.add("rotateRight");
   } else {
     newDiv.classList.add("rotateLeft");
   }
-  const toDoList = document.createElement("li");
+  const toDoList = document.createElement("span");
   toDoList.classList.add("Rotate");
   toDoList.setAttribute("id", arr.length);
   newDiv.appendChild(toDoList);
+  
+  toDoList.addEventListener('click',function(e){
+    const item= e.target;
+    item.setAttribute('contentEditable',true);
+  })
+  
 
   toDoList.innerHTML = inputField.value;
   const checkedButton = document.createElement("button");
@@ -34,7 +46,7 @@ const newDiv = document.createElement("div");
   checkedButton.classList.add("checkedButton");
   newDiv.appendChild(checkedButton);
   newDiv.appendChild(deleteButton);
-//   deleteButton.innerHTML = '<img src="images/bin.png" alt="">';
+  deleteButton.innerHTML = '<img src="images/bin.png" alt="">';
   checkedButton.innerHTML = '<img src="images/done.png" alt="">';
   inputField.value = "";
   arr.push(newDiv);
@@ -64,3 +76,4 @@ function tasksChecked(toDoList,newDiv){
       }
     
 }
+
