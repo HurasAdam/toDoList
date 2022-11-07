@@ -58,18 +58,22 @@ function removeTask(e) {
   const item = e.target;
   console.log(item);
   item.parentElement.remove();
+  arr.pop();
 }
 function tasksChecked(toDoList, newDiv) {
   newDivArr.push(toDoList);
 
   if (counter2 <= 5) {
+    
     const tasksDone = document.createElement("div");
     tasksDone.classList.add("tasksDone");
     tasksDone.setAttribute("id", "tasksDone" + checkedTasks.length);
     checkedTasks.appendChild(tasksDone);
     newDivArr.pop();
+  
     newDiv.remove();
     counter2++;
+    
   } else {
     alert("List of completed tasks is full");
   }

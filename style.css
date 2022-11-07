@@ -109,8 +109,11 @@ body {
   font-weight: bold;
   border: none;
   display: inline-block;
-
   word-wrap: break-word;
+}
+
+.Rotate:active{
+  text-decoration: line-through;
 }
 
 .toDoList {
@@ -181,14 +184,14 @@ body {
   margin: 9px;
 }
 
-/* .checkedTasks {
+.checkedTasks {
   border: 2px solid red;
  visibility: hidden;
 
   overflow: hidden;
   display: grid;
   place-items: center;
-} */
+}
 
 .pages {
   width: 20px;
