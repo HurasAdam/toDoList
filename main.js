@@ -7,18 +7,30 @@ const newDivArr = [];
 const arr = [];
 
 let counter2 = 0;
-const choice = document.querySelector("#choice");
 
+inputField.addEventListener("click", function () {
+  inputField.value = "";
+});
 addButton.addEventListener("click", createTask);
 
+
+
 function createTask() {
+
+  if(inputField.value===''){
+    alert('You can not create empty task');
+    return;
+  }
+
   const newDiv = document.createElement("div");
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
-  if (arr.length > 7) {
-    alert("Task Board is full");
+  if (arr.length >= 9) {
+    alert("List is full, remove old tasks before add new one ");
+
     return;
   }
+
   if (arr.length % 2 === 0) {
     newDiv.classList.add("rotateRight");
   } else {
@@ -47,34 +59,28 @@ function createTask() {
   arr.push(newDiv);
 
   //(delete,check) buttons listeners
-  checkedButton.addEventListener("click", function (e) {
-    tasksChecked(toDoList, newDiv);
-  });
+  checkedButton.addEventListener("click", tasksChecked);
   deleteButton.addEventListener("click", removeTask);
-}
 
-//removing tasks
-function removeTask(e) {
-  const item = e.target;
-  console.log(item);
-  item.parentElement.remove();
-  arr.pop();
-}
-function tasksChecked(toDoList, newDiv) {
-  newDivArr.push(toDoList);
-
-  if (counter2 <= 5) {
-    
-    const tasksDone = document.createElement("div");
-    tasksDone.classList.add("tasksDone");
-    tasksDone.setAttribute("id", "tasksDone" + checkedTasks.length);
-    checkedTasks.appendChild(tasksDone);
-    newDivArr.pop();
-  
-    newDiv.remove();
-    counter2++;
-    
-  } else {
-    alert("List of completed tasks is full");
+  //removing tasks
+  function removeTask(e) {
+    const item = e.target;
+    console.log(item);
+    newDiv.classList.add("fall");
+    newDiv.addEventListener("transitionend", function () {
+      item.parentElement.remove();
+      arr.pop();
+    });
+  }
+  function tasksChecked(e) {
+    newDivArr.push(toDoList);
+    const item = e.target;
+    newDiv.classList.toggle("line-thru");
   }
 }
+
+// function setInputValue() {
+//   inputField.value = "add your task";
+// }
+
+// document.onload = setInputValue();
