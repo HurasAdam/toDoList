@@ -15,7 +15,7 @@ const arr = [];
 let counter2 = 0;
 
 inputField.addEventListener("click", function () {
-  inputField.value = "";
+  inputField.placeholder= "";
 });
 addButton.addEventListener("click", createTask);
 
