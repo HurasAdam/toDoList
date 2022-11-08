@@ -7,7 +7,6 @@
 body {
   height: 100vh;
   width: 100vw;
-
   background: linear-gradient(45deg, rgb(64, 161, 161), rgb(78, 76, 226));
   display: grid;
   place-items: center;
@@ -24,7 +23,7 @@ body {
   border-radius: 5px;
   width: 350px;
   text-align: center;
-  color:black;
+  color: black;
   font-weight: bold;
   font-size: 18px;
   border: none;
@@ -34,7 +33,6 @@ body {
   height: 90%;
   min-width: 80%;
   min-height: 80%;
-
   width: 80%;
   padding: 40 100px;
   display: flex;
@@ -43,10 +41,10 @@ body {
 
   column-gap: 30px;
   background: linear-gradient(
-        60deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.5)
-    );
+    60deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.5)
+  );
   border-radius: 10px;
 }
 
@@ -56,6 +54,7 @@ body {
   height: 240px;
   position: relative;
   width: 240px;
+
   color: #000;
   background: #ffc;
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
@@ -116,7 +115,7 @@ body {
   word-wrap: break-word;
 }
 
-.Rotate:active{
+.Rotate:active {
   text-decoration: line-through;
 }
 
@@ -124,7 +123,6 @@ body {
   height: 20px;
   width: 60%;
   display: flex;
-
   color: black;
   min-width: 75%;
   list-style-type: none;
@@ -191,8 +189,7 @@ body {
 
 .checkedTasks {
   border: 2px solid red;
- visibility: hidden;
-
+  visibility: hidden;
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -205,19 +202,17 @@ body {
   display: flex;
 }
 
-
-.fall{
-
-transition: all 1.2s;
-opacity: 0;
+.fall {
+  transition: all 1.2s;
+  opacity: 0;
 }
 
-.popup{
+.popup {
   width: 100vw;
   height: 100vh;
   background-color: red;
 }
 
-.line-thru{
+.line-thru {
   text-decoration: line-through;
 }

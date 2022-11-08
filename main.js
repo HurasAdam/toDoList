@@ -1,9 +1,9 @@
-const newTaskAudio= new Audio();
-newTaskAudio.src='sound/scribble.mp3';
-const checkmarkAudio=new Audio();
-checkmarkAudio.src='sound/check.mp3';
-const removeTaskAudio= new Audio();
-removeTaskAudio.src='sound/paper-rip.mp3';
+const newTaskAudio = new Audio();
+newTaskAudio.src = "sound/scribble.mp3";
+const checkmarkAudio = new Audio();
+checkmarkAudio.src = "sound/check.mp3";
+const removeTaskAudio = new Audio();
+removeTaskAudio.src = "sound/paper-rip.mp3";
 const addButton = document.querySelector(".addButton");
 const container = document.querySelector(".container");
 const inputField = document.querySelector(".inputField");
@@ -19,17 +19,14 @@ inputField.addEventListener("click", function () {
 });
 addButton.addEventListener("click", createTask);
 
-
-
 function createTask() {
-
-  if(inputField.value===''){
-    alert('You can not create empty task');
+  if (inputField.value === "") {
+    alert("You can not create empty task");
     return;
   }
-  
+
   const newDiv = document.createElement("div");
-  newTaskAudio.play()
+  newTaskAudio.play();
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
   if (arr.length >= 9) {
