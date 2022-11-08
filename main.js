@@ -1,3 +1,9 @@
+const newTaskAudio= new Audio();
+newTaskAudio.src='sound/scribble.mp3';
+const checkmarkAudio=new Audio();
+checkmarkAudio.src='sound/check.mp3';
+const removeTaskAudio= new Audio();
+removeTaskAudio.src='sound/paper-rip.mp3';
 const addButton = document.querySelector(".addButton");
 const container = document.querySelector(".container");
 const inputField = document.querySelector(".inputField");
@@ -21,8 +27,9 @@ function createTask() {
     alert('You can not create empty task');
     return;
   }
-
+  
   const newDiv = document.createElement("div");
+  newTaskAudio.play()
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
   if (arr.length >= 9) {
@@ -64,6 +71,7 @@ function createTask() {
 
   //removing tasks
   function removeTask(e) {
+    removeTaskAudio.play();
     const item = e.target;
     console.log(item);
     newDiv.classList.add("fall");
@@ -73,6 +81,7 @@ function createTask() {
     });
   }
   function tasksChecked(e) {
+    checkmarkAudio.play();
     newDivArr.push(toDoList);
     const item = e.target;
     newDiv.classList.toggle("line-thru");
