@@ -4,6 +4,9 @@ const checkmarkAudio = new Audio();
 checkmarkAudio.src = "sound/check.mp3";
 const removeTaskAudio = new Audio();
 removeTaskAudio.src = "sound/paper-rip.mp3";
+const popupTxt = document.querySelector(".popupTxt");
+const popupButton = document.querySelector(".popupButton");
+const popup = document.querySelector(".popupContainer");
 const addButton = document.querySelector(".addButton");
 const container = document.querySelector(".container");
 const inputField = document.querySelector(".inputField");
@@ -15,13 +18,19 @@ const arr = [];
 let counter2 = 0;
 
 inputField.addEventListener("click", function () {
-  inputField.placeholder= "";
+  inputField.placeholder = "";
 });
 addButton.addEventListener("click", createTask);
 
 function createTask() {
   if (inputField.value === "") {
-    alert("You can not create empty task");
+    wrapper.classList.toggle("active");
+    popup.classList.add("active");
+    popupTxt.classList.toggle("active");
+    popupButton.classList.add("active");
+
+    popup.appendChild(popupTxt);
+    popupTxt.textContent = "You can not create an empty task";
     return;
   }
 
@@ -85,8 +94,11 @@ function createTask() {
   }
 }
 
-// function setInputValue() {
-//   inputField.value = "add your task";
-// }
+function popupAccept() {
+  wrapper.classList.toggle("active");
+  popup.classList.remove("active");
+  popupButton.classList.remove("active");
+  popupTxt.innerHTML = "";
+}
 
-// document.onload = setInputValue();
+popupButton.addEventListener("click", popupAccept);

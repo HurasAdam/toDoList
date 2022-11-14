@@ -38,7 +38,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-
   column-gap: 30px;
   background: linear-gradient(
     60deg,
@@ -46,6 +45,10 @@ body {
     rgba(255, 255, 255, 0.5)
   );
   border-radius: 10px;
+}
+
+.wrapper.active {
+  filter: blur(14px);
 }
 
 .rotateRight {
@@ -215,4 +218,53 @@ body {
 
 .line-thru {
   text-decoration: line-through;
+}
+
+.popupContainer {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  background-color: #37444b;
+  color: white;
+
+  letter-spacing: 2px;
+  border-radius: 25px;
+  transition: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popupContainer.active {
+  width: 450px;
+  height: 250px;
+}
+
+.popupButton {
+  position: absolute;
+
+  transition: ease-in 0.5s;
+
+  background: #0bcf9c;
+  bottom: 12%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  visibility: hidden;
+  color: white;
+}
+
+.popupButton.active {
+  cursor: pointer;
+  height: 45px;
+  width: 65px;
+  visibility: visible;
+}
+
+.popupTxt {
+}
+
+.popupTxt.active {
 }
