@@ -69,6 +69,7 @@ body {
   display: grid;
   margin: 50px;
   grid-template-columns: repeat(3, 70% 15% 15%);
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
   height: 240px;
   width: 240px;
   color: #000;
@@ -226,7 +227,7 @@ body {
   height: 0px;
   background-color: #37444b;
   color: white;
-
+  box-shadow: 6px 6px 10px rgba(33, 33, 33, 0.7);
   letter-spacing: 2px;
   border-radius: 25px;
   transition: 0.5s;

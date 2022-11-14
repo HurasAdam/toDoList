@@ -24,13 +24,8 @@ addButton.addEventListener("click", createTask);
 
 function createTask() {
   if (inputField.value === "") {
-    wrapper.classList.toggle("active");
-    popup.classList.add("active");
-    popupTxt.classList.toggle("active");
-    popupButton.classList.add("active");
-
-    popup.appendChild(popupTxt);
-    popupTxt.textContent = "You can not create an empty task";
+    const emptyTask = "You can not create an empty task";
+    showPopup(emptyTask);
     return;
   }
 
@@ -39,8 +34,8 @@ function createTask() {
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
   if (arr.length >= 9) {
-    alert("List is full, remove old tasks before add new one ");
-
+    const fullBoard = "List is full, remove old tasks before add new one ";
+    showPopup(fullBoard);
     return;
   }
 
@@ -92,6 +87,15 @@ function createTask() {
     const item = e.target;
     newDiv.classList.toggle("line-thru");
   }
+}
+
+function showPopup(popupAlert) {
+  wrapper.classList.toggle("active");
+  popup.classList.add("active");
+  popupTxt.classList.toggle("active");
+  popupButton.classList.add("active");
+  popup.appendChild(popupTxt);
+  popupTxt.textContent = popupAlert;
 }
 
 function popupAccept() {
