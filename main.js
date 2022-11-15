@@ -4,6 +4,8 @@ const checkmarkAudio = new Audio();
 checkmarkAudio.src = "sound/check.mp3";
 const removeTaskAudio = new Audio();
 removeTaskAudio.src = "sound/paper-rip.mp3";
+const clearBoardAudio = new Audio();
+clearBoardAudio.src = "sound/clearBoard.mp3";
 const popupTxt = document.querySelector(".popupTxt");
 const popupButton = document.querySelector(".popupButton");
 const popup = document.querySelector(".popupContainer");
@@ -100,9 +102,21 @@ function showPopup(popupAlert) {
 
 function popupAccept() {
   wrapper.classList.toggle("active");
-  popup.classList.remove("active");
   popupButton.classList.remove("active");
+  popup.classList.remove("active");
+
   popupTxt.innerHTML = "";
 }
 
 popupButton.addEventListener("click", popupAccept);
+
+const clearBoardButton = document.querySelector(".clearBoard");
+
+clearBoardButton.addEventListener("click", function () {
+  arr.forEach(function (item) {
+    item.remove();
+
+    clearBoardAudio.play();
+  });
+  arr.splice(0, arr.length);
+});
