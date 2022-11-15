@@ -37,7 +37,8 @@ function createTask() {
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
   if (arr.length >= 9) {
-    const fullBoard ="List of tasks is full, remove old tasks before add new one ";
+    const fullBoard =
+      "List of tasks is full, remove old tasks before add new one ";
     showPopup(fullBoard);
     return;
   }
@@ -72,7 +73,7 @@ function createTask() {
   //(delete,check) buttons listeners
   checkedButton.addEventListener("click", tasksChecked);
   deleteButton.addEventListener("click", removeTask);
-  popupButton.addEventListener("click", popupAccept);
+
   clearBoardButton.addEventListener("click", removeAllTasks);
 
   //removing single task
@@ -121,3 +122,4 @@ function removeAllTasks() {
   });
   arr.splice(0, arr.length);
 }
+popupButton.addEventListener("click", popupAccept);

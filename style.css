@@ -95,8 +95,8 @@ body {
 
 .addButton {
   margin: 0 -45px;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   border: none;
   background: none;
   cursor: pointer;
@@ -105,6 +105,11 @@ body {
 .addButton img {
   height: 40px;
   width: 40px;
+  border-radius: 60%;
+}
+.addButton img:hover {
+  transition: ease 0.15s;
+  background: #0de443;
 }
 
 .Rotate {
@@ -229,6 +234,7 @@ body {
   box-shadow: 6px 6px 10px rgba(33, 33, 33, 0.7);
   letter-spacing: 2px;
   border-radius: 25px;
+
   transition: 0.5s;
   display: flex;
   align-items: center;
@@ -242,8 +248,8 @@ body {
 
 .popupButton {
   position: absolute;
-  transition: ease-in 0.5s;
-  background: #0bcf9c;
+  transition: ease-in 0.2s;
+  background: #087659;
   bottom: 12%;
   border-radius: 5px;
   display: flex;
@@ -261,6 +267,10 @@ body {
   visibility: visible;
 }
 
+.popupButton:hover {
+  background: #0d8766;
+}
+
 .clearBoard {
   position: relative;
   background-color: black;
@@ -276,4 +286,14 @@ body {
   left: 12%;
   margin-top: 3px;
   cursor: pointer;
+}
+.clearBoard:hover {
+  color: rgb(126, 23, 23);
+  scale: 1.03;
+  transition: ease 0.15s;
+}
+
+.popupTxt {
+  position: relative;
+  bottom: 18%;
 }
