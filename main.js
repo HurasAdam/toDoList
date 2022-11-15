@@ -33,9 +33,15 @@ function createTask() {
   }
 
   const newDiv = document.createElement("div");
+  const tooltipSpan = document.createElement("span");
+  tooltipSpan.classList.add("tooltipSpan");
+  tooltipSpan.innerText = "Doubleclick into text to edit";
+
   newTaskAudio.play();
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
+
+  newDiv.appendChild(tooltipSpan);
   if (arr.length >= 9) {
     const fullBoard =
       "List of tasks is full, remove old tasks before add new one ";
@@ -52,6 +58,14 @@ function createTask() {
   toDoList.classList.add("Rotate");
   toDoList.setAttribute("id", arr.length);
   newDiv.appendChild(toDoList);
+
+  toDoList.addEventListener("mouseover", function () {
+    tooltipSpan.classList.add("active");
+  });
+
+  toDoList.addEventListener("mouseout", function () {
+    tooltipSpan.classList.remove("active");
+  });
 
   toDoList.addEventListener("click", function (e) {
     const item = e.target;
