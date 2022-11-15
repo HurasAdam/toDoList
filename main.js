@@ -6,6 +6,8 @@ const removeTaskAudio = new Audio();
 removeTaskAudio.src = "sound/paper-rip.mp3";
 const clearBoardAudio = new Audio();
 clearBoardAudio.src = "sound/clearBoard.mp3";
+const popupAudio = new Audio();
+popupAudio.src = "sound/popup.mp3";
 const popupTxt = document.querySelector(".popupTxt");
 const popupButton = document.querySelector(".popupButton");
 const popup = document.querySelector(".popupContainer");
@@ -112,6 +114,7 @@ function createTask() {
 
 //generate popup msg
 function showPopup(popupAlert) {
+  popupAudio.play();
   wrapper.classList.add("active");
   popup.classList.add("active");
   popupTxt.classList.add("active");
