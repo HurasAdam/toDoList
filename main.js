@@ -14,6 +14,7 @@ const container = document.querySelector(".container");
 const inputField = document.querySelector(".inputField");
 const wrapper = document.querySelector(".wrapper");
 const checkedTasks = document.querySelector(".checkedTasks");
+const clearBoardButton = document.querySelector(".clearBoard");
 const newDivArr = [];
 const arr = [];
 
@@ -36,7 +37,7 @@ function createTask() {
   newDiv.setAttribute("id", "div" + arr.length);
   wrapper.appendChild(newDiv);
   if (arr.length >= 9) {
-    const fullBoard = "List is full, remove old tasks before add new one ";
+    const fullBoard ="List of tasks is full, remove old tasks before add new one ";
     showPopup(fullBoard);
     return;
   }
@@ -71,18 +72,21 @@ function createTask() {
   //(delete,check) buttons listeners
   checkedButton.addEventListener("click", tasksChecked);
   deleteButton.addEventListener("click", removeTask);
+  popupButton.addEventListener("click", popupAccept);
+  clearBoardButton.addEventListener("click", removeAllTasks);
 
-  //removing tasks
+  //removing single task
   function removeTask(e) {
     removeTaskAudio.play();
     const item = e.target;
-    console.log(item);
     newDiv.classList.add("fall");
     newDiv.addEventListener("transitionend", function () {
       item.parentElement.remove();
       arr.pop();
     });
   }
+
+  //setting task as done
   function tasksChecked(e) {
     checkmarkAudio.play();
     newDivArr.push(toDoList);
@@ -91,32 +95,29 @@ function createTask() {
   }
 }
 
+//generate popup msg
 function showPopup(popupAlert) {
-  wrapper.classList.toggle("active");
+  wrapper.classList.add("active");
   popup.classList.add("active");
-  popupTxt.classList.toggle("active");
+  popupTxt.classList.add("active");
   popupButton.classList.add("active");
   popup.appendChild(popupTxt);
   popupTxt.textContent = popupAlert;
 }
 
+//popup accept buton
 function popupAccept() {
-  wrapper.classList.toggle("active");
+  wrapper.classList.remove("active");
   popupButton.classList.remove("active");
   popup.classList.remove("active");
-
   popupTxt.innerHTML = "";
 }
 
-popupButton.addEventListener("click", popupAccept);
-
-const clearBoardButton = document.querySelector(".clearBoard");
-
-clearBoardButton.addEventListener("click", function () {
+//removing all tasks
+function removeAllTasks() {
   arr.forEach(function (item) {
     item.remove();
-
     clearBoardAudio.play();
   });
   arr.splice(0, arr.length);
-});
+}
