@@ -17,10 +17,12 @@ const inputField = document.querySelector(".inputField");
 const wrapper = document.querySelector(".wrapper");
 const checkedTasks = document.querySelector(".checkedTasks");
 const clearBoardButton = document.querySelector(".clearBoard");
-const newDivArr = [];
-const arr = [];
 
-let counter2 = 0;
+const gameState= {
+ arr:  [],
+ newDivArr:[],
+ counter2 : 0,
+}
 
 inputField.addEventListener("click", function () {
   inputField.placeholder = "";
@@ -40,25 +42,25 @@ function createTask() {
   tooltipSpan.innerText = "Doubleclick to edit";
 
   newTaskAudio.play();
-  newDiv.setAttribute("id", "div" + arr.length);
+  newDiv.setAttribute("id", "div" + gameState.arr.length);
   wrapper.appendChild(newDiv);
 
   newDiv.appendChild(tooltipSpan);
-  if (arr.length >= 9) {
+  if (gameState.arr.length >= 9) {
     const fullBoard =
       "List of tasks is full, remove old tasks before add new one ";
     showPopup(fullBoard);
     return;
   }
 
-  if (arr.length % 2 === 0) {
+  if (gameState.arr.length % 2 === 0) {
     newDiv.classList.add("rotateRight");
   } else {
     newDiv.classList.add("rotateLeft");
   }
   const toDoList = document.createElement("span");
   toDoList.classList.add("Rotate");
-  toDoList.setAttribute("id", arr.length);
+  toDoList.setAttribute("id", gameState.arr.length);
   newDiv.appendChild(toDoList);
 
   toDoList.addEventListener("mouseover", function () {
@@ -84,7 +86,7 @@ function createTask() {
   deleteButton.innerHTML = '<img src="images/bin.png" alt="">';
   checkedButton.innerHTML = '<img src="images/done.png" alt="">';
   inputField.value = "";
-  arr.push(newDiv);
+  gameState.arr.push(newDiv);
 
   //(delete,check) buttons listeners
   checkedButton.addEventListener("click", tasksChecked);
@@ -99,14 +101,14 @@ function createTask() {
     newDiv.classList.add("fall");
     newDiv.addEventListener("transitionend", function () {
       item.parentElement.remove();
-      arr.pop();
+      gameState.arr.pop();
     });
   }
 
   //setting task as done
   function tasksChecked(e) {
     checkmarkAudio.play();
-    newDivArr.push(toDoList);
+    gameState.newDivArr.push(toDoList);
     const item = e.target;
     newDiv.classList.toggle("line-thru");
   }
@@ -133,10 +135,27 @@ function popupAccept() {
 
 //removing all tasks
 function removeAllTasks() {
-  arr.forEach(function (item) {
+  gameState.arr.forEach(function (item) {
     item.remove();
     clearBoardAudio.play();
   });
-  arr.splice(0, arr.length);
+  gameState.arr.splice(0, gameState.arr.length);
 }
 popupButton.addEventListener("click", popupAccept);
+
+
+function setGameState(){
+
+
+const state= localStorage.setItem('state',JSON.stringify(gameState));
+
+
+}
+
+
+function getGameState(){
+
+const result = JSON.parse(localStorage.getItem('state'))
+console.log(result.arr);
+
+}
