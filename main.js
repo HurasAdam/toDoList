@@ -37,7 +37,7 @@ function createTask() {
   const newDiv = document.createElement("div");
   const tooltipSpan = document.createElement("span");
   tooltipSpan.classList.add("tooltipSpan");
-  tooltipSpan.innerText = "Doubleclick into text to edit";
+  tooltipSpan.innerText = "Doubleclick to edit";
 
   newTaskAudio.play();
   newDiv.setAttribute("id", "div" + arr.length);
