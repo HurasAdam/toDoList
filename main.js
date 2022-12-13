@@ -41,6 +41,7 @@ function createTask() {
   tooltipSpan.classList.add("tooltipSpan");
   tooltipSpan.innerText = "Doubleclick to edit";
 
+  
   newTaskAudio.play();
   newDiv.setAttribute("id", "div" + gameState.arr.length);
   wrapper.appendChild(newDiv);
