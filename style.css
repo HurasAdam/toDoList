@@ -1,5 +1,5 @@
 * {
-  margin: 0;
+  margin: ;
   padding: 0;
   box-sizing: border-box;
 }
@@ -14,9 +14,17 @@ body {
   grid-template-rows: repeat(2, 10% 90%);
 }
 
+
+.animate{
+
+}
+
 /* Input, buttons Section */
 .container {
   display: flex;
+  justify-content: center;
+
+  
 }
 
 .inputField {
@@ -33,14 +41,14 @@ body {
 
 .wrapper {
  
- height: 95%;
-  margin:0 auto;
+ min-height: 90%;
+  margin:30px auto 0 auto;
   width: 82%;
-  
+  padding: 0px 2px;
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(180px, 1fr)););
   
-  column-gap:0px;
+  column-gap:5px;
   background: linear-gradient(
     60deg,
     rgba(255, 255, 255, 0.1),
@@ -57,7 +65,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 70% 15% 15%);
   height: max-content;
-  
+  font-size: 16px;
   position: relative;
   width: 90%;
   height: 10rem;
@@ -65,12 +73,13 @@ body {
   background: #ffc;
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
   transform: rotate(-6deg);
-  transition: transform 0.15s linear;
+  transition: all 0.15s linear;
 }
 
 .rotateLeft {
   display: grid;
   margin: 50px auto;
+  font-size: 16px;
   grid-template-columns: repeat(3, 70% 15% 15%);
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
   width: 90%;
@@ -80,21 +89,28 @@ body {
   position: relative;
   top: 5px;
   background: #cfc;
-  transition: transform 0.15s linear;
+  transition: all 0.15s linear;
 }
+
+.rotateLeft.active{
+  
+}
+
 
 .rotateRight:hover {
   box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
-  transform: scale(1.25);
+  transform: scale(1.35);
   position: relative;
   z-index: 5;
+  font-size: 24px;
 }
 
 .rotateLeft:hover {
   box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
-  transform: scale(1.25);
+  transform: scale(1.35);
   position: relative;
   z-index: 5;
+  font-size: 24px;
 }
 
 .addButton {
@@ -102,8 +118,11 @@ body {
   height: 40px;
   width: 40px;
   border: none;
-  background: none;
+border-radius: 50%;
   cursor: pointer;
+  color:white;
+  font-size: 2rem;
+  background-color: black
 }
 
 .addButton img {
@@ -120,7 +139,7 @@ body {
   width: 100%;
   height: 40px;
   margin: 30px 6px;
-  font-size: 24px;
+  
   font-weight: bold;
   border: none;
   display: inline-block;
@@ -166,6 +185,7 @@ body {
   background-color: #ffc;
   border-radius: 5px;
   transition: 0.2s ease-in-out;
+
 }
 
 .rotateLeft Button {
@@ -181,6 +201,7 @@ body {
 .checkedButton,
 .deleteButton {
   cursor: pointer;
+  transition: all 0.15s ease-in;
 }
 
 .checkedButton:hover {

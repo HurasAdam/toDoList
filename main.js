@@ -18,11 +18,11 @@ const wrapper = document.querySelector(".wrapper");
 const checkedTasks = document.querySelector(".checkedTasks");
 const clearBoardButton = document.querySelector(".clearBoard");
 
-const gameState= {
- arr:  [],
- newDivArr:[],
- counter2 : 0,
-}
+const gameState = {
+  arr: [],
+  newDivArr: [],
+  counter2: 0,
+};
 
 inputField.addEventListener("click", function () {
   inputField.placeholder = "";
@@ -30,26 +30,28 @@ inputField.addEventListener("click", function () {
 addButton.addEventListener("click", createTask);
 
 function createTask() {
-  if (inputField.value === "") {
+  if (!inputField.value) {
     const emptyTask = "You can not create an empty task";
-    showPopup(emptyTask);
-    return;
+    return showPopup(emptyTask);
   }
 
   const newDiv = document.createElement("div");
+
   const tooltipSpan = document.createElement("span");
   tooltipSpan.classList.add("tooltipSpan");
   tooltipSpan.innerText = "Doubleclick to edit";
+  gameState.arr.push(newDiv);
 
-  
   newTaskAudio.play();
-  newDiv.setAttribute("id", "div" + gameState.arr.length);
+  newDiv.setAttribute("id", gameState.arr.length);
   wrapper.appendChild(newDiv);
 
   newDiv.appendChild(tooltipSpan);
-  if (gameState.arr.length >= 9) {
+  if (gameState.arr.length >= 13) {
+    newTaskAudio.pause();
     const fullBoard =
       "List of tasks is full, remove old tasks before add new one ";
+
     showPopup(fullBoard);
     return;
   }
@@ -87,7 +89,6 @@ function createTask() {
   deleteButton.innerHTML = '<img src="images/bin.png" alt="">';
   checkedButton.innerHTML = '<img src="images/done.png" alt="">';
   inputField.value = "";
-  gameState.arr.push(newDiv);
 
   //(delete,check) buttons listeners
   checkedButton.addEventListener("click", tasksChecked);
@@ -144,19 +145,28 @@ function removeAllTasks() {
 }
 popupButton.addEventListener("click", popupAccept);
 
-
-function setGameState(){
-
-
-const state= localStorage.setItem('state',JSON.stringify(gameState));
-
-
+function setGameState() {
+  const state = localStorage.setItem("state", JSON.stringify(gameState));
 }
 
-
-function getGameState(){
-
-const result = JSON.parse(localStorage.getItem('state'))
-console.log(result.arr);
-
+function getGameState() {
+  const result = JSON.parse(localStorage.getItem("state"));
+  console.log(result.arr);
 }
+
+const Observer = new MutationObserver(function (entries) {
+  entries.forEach((mutation) => {
+    console.log("true");
+    const addedDivs = Array.from(mutation.addedNodes).filter(
+      (mutation) =>
+        mutation.classList.contains("rotateLeft") ||
+        mutation.classList.contains("rotateRight")
+    );
+
+    // }
+    // addedDivs.forEach(newDiv => newDiv.classList.add('active'))
+    gameState.arr[0].classList.add("active");
+  });
+});
+
+Observer.observe(wrapper, { childList: true });
