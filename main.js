@@ -21,7 +21,7 @@ const clearBoardButton = document.querySelector(".clearBoard");
 const gameState = {
   arr: [],
   newDivArr: [],
-  counter2: 0,
+  
 };
 
 inputField.addEventListener("click", function () {
@@ -138,8 +138,13 @@ function popupAccept() {
 //removing all tasks
 function removeAllTasks() {
   gameState.arr.forEach(function (item) {
-    item.remove();
     clearBoardAudio.play();
+    item.classList.add("fall");
+    item.addEventListener("transitionend", function () {
+      item.remove();
+    
+    })
+  
   });
   gameState.arr.splice(0, gameState.arr.length);
 }
@@ -154,19 +159,4 @@ function getGameState() {
   console.log(result.arr);
 }
 
-const Observer = new MutationObserver(function (entries) {
-  entries.forEach((mutation) => {
-    console.log("true");
-    const addedDivs = Array.from(mutation.addedNodes).filter(
-      (mutation) =>
-        mutation.classList.contains("rotateLeft") ||
-        mutation.classList.contains("rotateRight")
-    );
 
-    // }
-    // addedDivs.forEach(newDiv => newDiv.classList.add('active'))
-    gameState.arr[0].classList.add("active");
-  });
-});
-
-Observer.observe(wrapper, { childList: true });
