@@ -14,6 +14,7 @@ body {
   grid-template-rows: repeat(2, 10% 90%);
 }
 
+/* Input, buttons Section */
 .container {
   display: flex;
 }
@@ -23,6 +24,7 @@ body {
   border-radius: 5px;
   width: 350px;
   text-align: center;
+  margin:0 auto;
   color: black;
   font-weight: bold;
   font-size: 18px;
@@ -30,15 +32,15 @@ body {
 }
 
 .wrapper {
-  height: 90%;
-  min-width: 80%;
-  min-height: 80%;
-  width: 80%;
-  padding: 40 100px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  column-gap: 30px;
+ 
+ height: 95%;
+  margin:0 auto;
+  width: 82%;
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(180px, 1fr)););
+  
+  column-gap:0px;
   background: linear-gradient(
     60deg,
     rgba(255, 255, 255, 0.1),
@@ -54,9 +56,11 @@ body {
 .rotateRight {
   display: grid;
   grid-template-columns: repeat(3, 70% 15% 15%);
-  height: 240px;
+  height: max-content;
+  
   position: relative;
-  width: 240px;
+  width: 90%;
+  height: 10rem;
   color: #000;
   background: #ffc;
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
@@ -66,11 +70,11 @@ body {
 
 .rotateLeft {
   display: grid;
-  margin: 50px;
+  margin: 50px auto;
   grid-template-columns: repeat(3, 70% 15% 15%);
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
-  height: 240px;
-  width: 240px;
+  width: 90%;
+  height: 10rem;
   color: #000;
   transform: rotate(4deg);
   position: relative;
@@ -332,3 +336,16 @@ body {
 .tooltipSpan.active {
   visibility: visible;
 }
+
+@media only screen and (min-width:1000px) {
+  
+/* .rotateLeft, .rotateRight{
+  width: 20%;
+  height: 30%;
+}
+
+.wrapper{
+  gap:0;
+}
+}
+   */
