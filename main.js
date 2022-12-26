@@ -17,6 +17,7 @@ const inputField = document.querySelector(".inputField");
 const wrapper = document.querySelector(".wrapper");
 const checkedTasks = document.querySelector(".checkedTasks");
 const clearBoardButton = document.querySelector(".clearBoard");
+const popupBox= document.querySelector('.popup-Box');
 
 const gameState = {
   arr: [],
@@ -118,8 +119,9 @@ function createTask() {
 
 //generate popup msg
 function showPopup(popupAlert) {
+  
   popupAudio.play();
-  wrapper.classList.add("active");
+  popupBox.classList.add('active')
   popup.classList.add("active");
   popupTxt.classList.add("active");
   popupButton.classList.add("active");
@@ -129,7 +131,7 @@ function showPopup(popupAlert) {
 
 //popup accept buton
 function popupAccept() {
-  wrapper.classList.remove("active");
+  popupBox.classList.remove("active");
   popupButton.classList.remove("active");
   popup.classList.remove("active");
   popupTxt.innerHTML = "";
