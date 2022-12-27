@@ -130,13 +130,17 @@ function showPopup(popupAlert) {
 
 function disableContent() {
   gameState.arr.forEach((el) => {
-    const item = Array.from(el.children);
-    const arr = item.filter((item) => {
-      return item.nodeName === "BUTTON";
+    const children = Array.from(el.children);
+    const childrenButtons = children.filter((children) => {
+      return children.nodeName === "BUTTON";
     });
 
-    arr.forEach((button) => {
-      button.disabled = true;
+    childrenButtons.forEach((button) => {
+      if (popup.classList.contains("active")) {
+        button.disabled = true;
+      } else {
+        button.disabled = false;
+      }
     });
   });
 }
@@ -147,6 +151,7 @@ function popupAccept() {
   popupButton.classList.remove("active");
   popup.classList.remove("active");
   popupTxt.innerHTML = "";
+  disableContent();
 }
 
 //removing all tasks

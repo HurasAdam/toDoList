@@ -54,7 +54,7 @@ padding: 0;
 }
 
 .wrapper {
- 
+ position: relative;
  min-height: 90%;
   margin:30px auto 0 auto;
   width: 82%;
@@ -281,9 +281,10 @@ border-radius: 50%;
 }
 
 .popupContainer {
-  position:absolute;
- top:35%;
- right:31%;
+  
+position: relative;
+
+
 
   width: 0px;
   height: 0px;
