@@ -47,7 +47,7 @@ function createTask() {
   wrapper.appendChild(newDiv);
 
   newDiv.appendChild(tooltipSpan);
-  if (gameState.arr.length >= 13) {
+  if (gameState.arr.length >= 25) {
     newTaskAudio.pause();
     const fullBoard =
       "List of tasks is full, remove old tasks before add new one ";
@@ -56,11 +56,21 @@ function createTask() {
     return;
   }
 
+  if(gameState.arr.length<=7<=14){
   if (gameState.arr.length % 2 === 0) {
     newDiv.classList.add("rotateRight");
   } else {
     newDiv.classList.add("rotateLeft");
   }
+}
+
+else if(gameState.arr.length>=7){
+  if (gameState.arr.length % 2 === 0) {
+    newDiv.classList.add("rotateLeft");
+  } else {
+    newDiv.classList.add("rotateRight");
+  }
+}
   const toDoList = document.createElement("span");
   toDoList.classList.add("Rotate");
   toDoList.setAttribute("id", gameState.arr.length);
@@ -96,7 +106,7 @@ function createTask() {
 
   clearBoardButton.addEventListener("click", removeAllTasks);
 
-  //removing single task
+  //Remove Single Task 
   function removeTask(e) {
     removeTaskAudio.play();
     const item = e.target;
@@ -107,7 +117,7 @@ function createTask() {
     });
   }
 
-  //setting task as done
+  //Set Task as Done
   function tasksChecked(e) {
     checkmarkAudio.play();
     gameState.newDivArr.push(toDoList);
@@ -116,9 +126,11 @@ function createTask() {
   }
 }
 
-//generate popup msg
+//Enable Popup
 function showPopup(popupAlert) {
+  const popupScreen= document.querySelector('.popup-screen')
   popupAudio.play();
+  popupScreen.classList.add('active')
   popup.classList.add("active");
   popup.classList.add("active");
   popupTxt.classList.add("active");
@@ -128,6 +140,7 @@ function showPopup(popupAlert) {
   popupTxt.textContent = popupAlert;
 }
 
+//Disable/Enable Task Buttons
 function disableContent() {
   gameState.arr.forEach((el) => {
     const children = Array.from(el.children);
@@ -145,7 +158,7 @@ function disableContent() {
   });
 }
 
-//popup accept buton
+//Disable Popup
 function popupAccept() {
   popup.classList.remove("active");
   popupButton.classList.remove("active");
@@ -154,7 +167,7 @@ function popupAccept() {
   disableContent();
 }
 
-//removing all tasks
+//Remove All Tasks
 function removeAllTasks() {
   gameState.arr.forEach(function (item) {
     clearBoardAudio.play();
