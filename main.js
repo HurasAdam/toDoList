@@ -17,12 +17,11 @@ const inputField = document.querySelector(".inputField");
 const wrapper = document.querySelector(".wrapper");
 const checkedTasks = document.querySelector(".checkedTasks");
 const clearBoardButton = document.querySelector(".clearBoard");
-const popupBox= document.querySelector('.popup-Box');
+const popupBox = document.querySelector(".popup-Box");
 
 const gameState = {
   arr: [],
   newDivArr: [],
-  
 };
 
 inputField.addEventListener("click", function () {
@@ -119,19 +118,32 @@ function createTask() {
 
 //generate popup msg
 function showPopup(popupAlert) {
-  
   popupAudio.play();
-  popupBox.classList.add('active')
+  popup.classList.add("active");
   popup.classList.add("active");
   popupTxt.classList.add("active");
   popupButton.classList.add("active");
   popup.appendChild(popupTxt);
+  disableContent();
   popupTxt.textContent = popupAlert;
+}
+
+function disableContent() {
+  gameState.arr.forEach((el) => {
+    const item = Array.from(el.children);
+    const arr = item.filter((item) => {
+      return item.nodeName === "BUTTON";
+    });
+
+    arr.forEach((button) => {
+      button.disabled = true;
+    });
+  });
 }
 
 //popup accept buton
 function popupAccept() {
-  popupBox.classList.remove("active");
+  popup.classList.remove("active");
   popupButton.classList.remove("active");
   popup.classList.remove("active");
   popupTxt.innerHTML = "";
@@ -144,9 +156,7 @@ function removeAllTasks() {
     item.classList.add("fall");
     item.addEventListener("transitionend", function () {
       item.remove();
-    
-    })
-  
+    });
   });
   gameState.arr.splice(0, gameState.arr.length);
 }
@@ -160,5 +170,3 @@ function getGameState() {
   const result = JSON.parse(localStorage.getItem("state"));
   console.log(result.arr);
 }
-
-
