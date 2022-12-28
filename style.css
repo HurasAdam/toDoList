@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 100vh;
+  
  
   background: linear-gradient(45deg, rgb(64, 161, 161), rgb(78, 76, 226));
 
@@ -55,7 +55,7 @@ padding: 0;
 }
 
 .wrapper {
- position: relative;
+ 
  height: 100vh;
  min-height: 90%;
   margin:30px auto 0 auto;
@@ -75,6 +75,11 @@ padding: 0;
     rgba(255, 255, 255, 0.5)
   );
   border-radius: 10px;
+}
+
+.wrapper.active {
+  z-index:44444;
+backdrop-filter: blur(22px);
 }
 
 @media only screen and (width<940px) {
@@ -295,28 +300,34 @@ border-radius: 50%;
 
 
 .popup-screen{
-background: none;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  background: transparent;
-  backdrop-filter: blur(20px);
+
+
+top:50%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+  
 }
 
 .popup-screen.active{
 
-z-index: 999999999;
-height: 100%;
+top:0%;
+position: absolute;
+height:100%;
 width: 100%;
 
+
+
+border: 2px solid red;
+backdrop-filter: blur(14px);
+
 }
+
 
 .popupContainer {
   
 position: absolute;
-
-
-
   width: 0px;
   height: 0px;
   background-color: #37444b;
@@ -339,6 +350,22 @@ position: absolute;
   height: 250px;
 }
 
+@media only screen and (width<800px) {
+
+  .popupContainer.active {
+    width: 350px;
+    height: 150px;
+  }
+
+}
+
+@media only screen and (width<800px) {
+
+  .popupContainer.active {
+    width: 250px;
+    height: 220px;
+  }
+}
 
 
 .popupButton {
