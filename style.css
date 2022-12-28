@@ -5,9 +5,11 @@
 }
 
 body {
-  overflow-Y:hidden;
-  background: linear-gradient(45deg, rgb(64, 161, 161), rgb(78, 76, 226));
+max-height: 100%;
+
+background: linear-gradient(45deg, rgb(64, 161, 161), rgb(78, 76, 226));
 }
+
 
 /* Input, buttons Section */
 .container {
@@ -37,8 +39,8 @@ padding: 0;
 }
 
 .wrapper {
- height: 88vh;
- min-height: 90%;
+min-height: 45rem;
+height: max-content;
   margin:30px auto 0 auto;
   width: 82%;
   padding: 6px 2px 0px 2px;
@@ -250,21 +252,7 @@ justify-content: center;
 }
 
 
-.popup-screen{
-top:50%;
-display: flex;
-align-items: center;
-justify-content: center;
-height:100%;
-width: 98%;
-}
 
-.popup-screen.active{
-top:0%;
-position: absolute;
-overflow-x: hidden;
-backdrop-filter: blur(14px);
-}
 
 .popupContainer {
 position: absolute;
@@ -282,6 +270,8 @@ position: absolute;
   margin: 0 auto;
   z-index: 100000;
   justify-content: center;
+  top:0%;
+  right: 50%;
 }
 
 .popupContainer.active {
@@ -371,10 +361,10 @@ cursor: pointer;
 
 .tooltipSpan {
   position: absolute;
-  width: 170px;
+  width: 116px;
   color: #000;
   font-weight: 800;
-  padding: 20px 10px;
+  padding: 12px 10px;
   background: white;
   border-radius: 8px;
   transform: translateY(-140%);
@@ -384,8 +374,8 @@ cursor: pointer;
 
 .tooltipSpan::after {
   content: "";
-  width: 24px;
-  height: 24px;
+  width: 15px;
+  height: 15px;
   position: absolute;
   background-color: white;
   bottom: -4px;

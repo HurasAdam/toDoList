@@ -126,7 +126,7 @@ function createTask() {
 //Enable Popup
 function showPopup(popupAlert) {
   popupAudio.play();
-  popupScreen.classList.add("active");
+  popup.classList.add("active");
   popup.classList.add("active");
   popup.classList.add("active");
   popupTxt.classList.add("active");
@@ -156,7 +156,7 @@ function disableContent() {
 
 //Disable Popup
 function popupAccept() {
-  popupScreen.classList.remove("active");
+  popup.classList.remove("active");
   popupButton.classList.remove("active");
   popup.classList.remove("active");
   popupTxt.innerHTML = "";
