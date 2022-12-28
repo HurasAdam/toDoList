@@ -5,15 +5,9 @@
 }
 
 body {
-  
- 
+  overflow-Y:hidden;
   background: linear-gradient(45deg, rgb(64, 161, 161), rgb(78, 76, 226));
-
 }
-
-
-
-
 
 /* Input, buttons Section */
 .container {
@@ -21,22 +15,17 @@ body {
 display: flex;
 justify-content: center;
 width: max-content;
-margin: 1rem auto 4rem auto;
-height: 2.2rem;
+margin:1.2rem auto 2.5rem auto;
+height: max-content;
 align-items: center;
 box-sizing: border-box;
-padding: 0;
-
-
-
-
-  
+padding: 0;  
 }
 
 .inputField {
   display: flex;
   justify-content: space-around;
-  height: 100%;
+  height: 2rem;
  border-radius: 0.4rem;
   cursor: pointer;
   text-align: center;
@@ -47,33 +36,22 @@ padding: 0;
   border: none;
 }
 
-.holder{
-  background-color: red;
-  min-height: 100%;
-  min-width: 75%;
-  margin: 0 auto;
-}
-
 .wrapper {
- 
- height: 100vh;
+ height: 88vh;
  min-height: 90%;
   margin:30px auto 0 auto;
   width: 82%;
-  padding: 0px 2px;
+  padding: 6px 2px 0px 2px;
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(180px, 1fr));
   grid-template-rows: repeat(auto-fill,minmax(180px, 1fr));;
   z-index: 1;
   column-gap:5px;
   row-gap: 10px;
-  
- 
   background: linear-gradient(
     60deg,
     rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.5)
-  );
+    rgba(255, 255, 255, 0.5));
   border-radius: 10px;
 }
 
@@ -83,13 +61,10 @@ backdrop-filter: blur(22px);
 }
 
 @media only screen and (width<940px) {
-
   .wrapper {
-
 row-gap: 40px;
   }
 }
-
 
 .rotateRight {
   display: grid;
@@ -147,29 +122,14 @@ row-gap: 40px;
 display: flex;
 align-items: center;
 justify-content: center;
- 
  margin: 0.4rem;
  background: none;
  border: none;
  color:white;
  font-size: 2.4rem;
  cursor: pointer;
-  /* margin: 0 -45px;
-  height: 40px;
-  width: 40px;
-  border: none;
-border-radius: 50%;
-  cursor: pointer;
-  color:white;
-  font-size: 2rem;
-  background-color: black */
 }
 
-/* .addButton img {
-  height: 40px;
-  width: 40px;
-  border-radius: 60%;
-} */
 .addButton:hover {
   transition: ease 0.15s;
   color: #0de443;
@@ -180,7 +140,6 @@ border-radius: 50%;
   width: 100%;
   height: 40px;
   margin: 30px 6px;
-  
   font-weight: bold;
   border: none;
   display: inline-block;
@@ -226,7 +185,6 @@ border-radius: 50%;
   background-color: #ffc;
   border-radius: 5px;
   transition: 0.2s ease-in-out;
-
 }
 
 .rotateLeft Button {
@@ -247,7 +205,6 @@ border-radius: 50%;
 
 .checkedButton:hover {
   background-color: rgb(34, 148, 34);
-  
 }
 
 .deleteButton:hover {
@@ -288,45 +245,28 @@ border-radius: 50%;
   opacity: 0;
 }
 
-/* .popup {
-  width: 100vw;
-  height: 100vh;
-  background-color: red;
-} */
-
 .line-thru {
   text-decoration: line-through;
 }
 
 
 .popup-screen{
-
-
 top:50%;
 display: flex;
 align-items: center;
 justify-content: center;
-
-  
+height:100%;
+width: 98%;
 }
 
 .popup-screen.active{
-
 top:0%;
 position: absolute;
-height:100%;
-width: 100%;
-
-
-
-border: 2px solid red;
+overflow-x: hidden;
 backdrop-filter: blur(14px);
-
 }
 
-
 .popupContainer {
-  
 position: absolute;
   width: 0px;
   height: 0px;
@@ -344,19 +284,16 @@ position: absolute;
   justify-content: center;
 }
 
-
 .popupContainer.active {
   width: 450px;
   height: 250px;
 }
 
 @media only screen and (width<800px) {
-
   .popupContainer.active {
     width: 350px;
     height: 150px;
   }
-
 }
 
 @media only screen and (width<800px) {
@@ -366,7 +303,6 @@ position: absolute;
     height: 220px;
   }
 }
-
 
 .popupButton {
   position: absolute;
@@ -393,18 +329,15 @@ position: absolute;
 
 .popupButton:hover {
   background: #063126;
- 
 }
 
 .popup-Box{
   backdrop-filter: blur(12px);
-
   z-index: 100;
   height: 100%;
   margin: 0 auto;
   padding: 0;
   width:82vw;
- 
  top:0;
   visibility: hidden;
 }
@@ -413,19 +346,18 @@ position: absolute;
   visibility: visible;
 }
 
-
 .clearBoard {
 display: flex;
 justify-content: center;
 align-items: center;
 margin: 0.4rem;
 background: none;
-
 border: none;
 font-size: 1.5rem;
 color:white;
 cursor: pointer;
 }
+
 .clearBoard:hover {
   color: rgb(126, 23, 23);
  scale:1.15;
@@ -465,15 +397,3 @@ cursor: pointer;
   visibility: visible;
 }
 
-@media only screen and (min-width:1000px) {
-  
-/* .rotateLeft, .rotateRight{
-  width: 20%;
-  height: 30%;
-}
-
-.wrapper{
-  gap:0;
-}
-}
-   */
