@@ -67,6 +67,7 @@ padding: 0;
   z-index: 1;
   column-gap:5px;
   row-gap: 10px;
+  
  
   background: linear-gradient(
     60deg,
@@ -298,13 +299,16 @@ background: none;
   display: flex;
   justify-content: center;
   height: 100vh;
+  background: transparent;
+  backdrop-filter: blur(20px);
 }
 
 .popup-screen.active{
-backdrop-filter: blur(20px);
+
 z-index: 999999999;
 height: 100%;
 width: 100%;
+
 }
 
 .popupContainer {

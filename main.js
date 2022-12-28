@@ -56,21 +56,19 @@ function createTask() {
     return;
   }
 
-  if(gameState.arr.length<=7<=14){
-  if (gameState.arr.length % 2 === 0) {
-    newDiv.classList.add("rotateRight");
-  } else {
-    newDiv.classList.add("rotateLeft");
+  if (gameState.arr.length <= 7 <= 14) {
+    if (gameState.arr.length % 2 === 0) {
+      newDiv.classList.add("rotateRight");
+    } else {
+      newDiv.classList.add("rotateLeft");
+    }
+  } else if (gameState.arr.length >= 7) {
+    if (gameState.arr.length % 2 === 0) {
+      newDiv.classList.add("rotateLeft");
+    } else {
+      newDiv.classList.add("rotateRight");
+    }
   }
-}
-
-else if(gameState.arr.length>=7){
-  if (gameState.arr.length % 2 === 0) {
-    newDiv.classList.add("rotateLeft");
-  } else {
-    newDiv.classList.add("rotateRight");
-  }
-}
   const toDoList = document.createElement("span");
   toDoList.classList.add("Rotate");
   toDoList.setAttribute("id", gameState.arr.length);
@@ -106,7 +104,7 @@ else if(gameState.arr.length>=7){
 
   clearBoardButton.addEventListener("click", removeAllTasks);
 
-  //Remove Single Task 
+  //Remove Single Task
   function removeTask(e) {
     removeTaskAudio.play();
     const item = e.target;
@@ -121,16 +119,15 @@ else if(gameState.arr.length>=7){
   function tasksChecked(e) {
     checkmarkAudio.play();
     gameState.newDivArr.push(toDoList);
-    const item = e.target;
     newDiv.classList.toggle("line-thru");
   }
 }
 
 //Enable Popup
 function showPopup(popupAlert) {
-  const popupScreen= document.querySelector('.popup-screen')
+  const popupScreen = document.querySelector(".popup-screen");
   popupAudio.play();
-  popupScreen.classList.add('active')
+  popupScreen.classList.add("active");
   popup.classList.add("active");
   popup.classList.add("active");
   popupTxt.classList.add("active");
